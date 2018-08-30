@@ -1,0 +1,14 @@
+Package: slashGY
+Title: Growth and yield simulator for Slash pine (Pinus elliottii)
+Version: 1.0.0.000
+Authors@R: c(person("Priscila", "Someda-Dias", email = "priscilasomeda@hotmail.com", role = c("aut","cre")),
+             person("Salvador", "Gezan", email = "sgezan@ufl.edu", role = "aut"))
+Description: slashGY is a systems of equations to predict and project growth and yield of Slash pine (Pinus elliottii) stands with or without silvicultural traits using tree- or stand-level information.
+Depends: R (>= 3.3.3)
+License: GPL-2
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1
+Suggests: knitr,
+    rmarkdown
+VignetteBuilder: knitr
