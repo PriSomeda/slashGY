@@ -43,13 +43,13 @@
 #' SI <- stand.SITE(HDOM=50, AGE=12)$SI
 #' HDOM1 <-stand.SITE(SI=SI, AGE=13)$HDOM
 #' HDOM4 <-stand.SITE(SI=SI, AGE=14)$HDOM
-#' 
+#'
 #' N1 <- module.N(N0=693, AGE0=12, AGE1=13)$N1
 #' N2 <- module.N(N0=683.93, AGE0=13, AGE1=14)$N1
-#' 
+#'
 #' module.BA(N0=493, HDOM0=41.57, AGE0=12, projection=TRUE, BA0=51.74, N1=N1, HDOM1=HDOM1)$BA1
 #' module.BA(N0=493, HDOM0=41.57, AGE0=12, projection=TRUE, BA0=51.74, N1=N1, HDOM1=HDOM1)$BA0
-#' 
+#'
 #' module.BA(N0=693, HDOM0=50, AGE0=12, projection=TRUE, BA0=58.753, N1=683.93, HDOM1=54.61)$BA1
 #' module.BA(N0=683.93, HDOM0=54.61, AGE0=13, projection=TRUE, BA0=64.52, N1=674.74, HDOM1=59.05)$BA1
 
@@ -69,7 +69,7 @@ module.BA  <-  function(N0=NA, HDOM0=NA, AGE0=NA, Z1=0, Z2=0, Z3=0, ZB=0,
   a7 = 0.436
   a8 = 2.134
   a9 = -0.0960
-  
+
   #a1 = -3.394
   #a2 = -34.0570
   #a3 = 1.2410
@@ -79,7 +79,7 @@ module.BA  <-  function(N0=NA, HDOM0=NA, AGE0=NA, Z1=0, Z2=0, Z3=0, ZB=0,
   #a7 = 0.4190
   #a8 = 2.7630
   #a9 = -0.0960
-  
+
 
 
   # RBA =	(b1*T1 + b2*T2)*(Age-Agef)*exp(-(age-Agef)*(b3*T1 + b4*T2 - b5*S1 - b6*/S2))
@@ -118,12 +118,12 @@ module.BA  <-  function(N0=NA, HDOM0=NA, AGE0=NA, Z1=0, Z2=0, Z3=0, ZB=0,
 
     # Prediction and there is no fertilization
     if(is.na(AGEFERT)==T){
-      BA0 <- exp(a1+a2/AGE0)*HDOM0^(a3+a4/AGE0)*N0^(a5+a6/AGE0)+(a7*Z1+a8*Z3)*AGE0*exp(a9*AGE0)
+      BA0 <- 0.9162284*(exp(a1+a2/AGE0)*HDOM0^(a3+a4/AGE0)*N0^(a5+a6/AGE0)+(a7*Z1+a8*Z3)*AGE0*exp(a9*AGE0))
     }
 
     # Prediction and there is fertilization
     else if(is.na(AGEFERT)==F){
-      BA0 <- exp(a1+a2/AGE0)*HDOM0^(a3+a4/AGE0)*N0^(a5+a6/AGE0)+(a7*Z1+a8*Z3)*AGE0*exp(a9*AGE0)
+      BA0 <- 0.9162284*(exp(a1+a2/AGE0)*HDOM0^(a3+a4/AGE0)*N0^(a5+a6/AGE0)+(a7*Z1+a8*Z3)*AGE0*exp(a9*AGE0))
       BA0 <- BA0 + (b1*T1 + b2*T2)*(AGE0-AGEFERT)*exp(-(AGE0-AGEFERT)*(b3*T1 + b4*T2 - b5*S1 - b6*S2))
     }
     BA1 <- NA
@@ -145,7 +145,7 @@ module.BA  <-  function(N0=NA, HDOM0=NA, AGE0=NA, Z1=0, Z2=0, Z3=0, ZB=0,
              ((N0^(a5+a6/AGE0))*(HDOM0^(a3+a4/AGE0))*(exp(a1+a2/AGE0))*(-a2/(AGE0^2)))
     part2 <- ((a7*Z1+a8*Z3)*(exp(a9*AGE0)))*(a9*AGE0+1)
     deltaBA <- part1 + part2
-    BA1 <- BA0+deltaBA
+    BA1 <- BA0+deltaBA*0.9162284
 
   }
 

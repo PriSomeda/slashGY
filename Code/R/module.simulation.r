@@ -128,7 +128,7 @@ module.simulation <- function(stand=NULL){
     # Yearly simulations
     for(y in (AGE0 + 1):AGEF){
 
-      HDOM1 <- stand.SITE(SI=SI,AGE=y, Z1=Z1, Z2=Z2, Z3=Z3, T1=T1, T2=T2, AGEFERT=AGEFERT)$HDOM
+      HDOM1 <- stand.SITE(SI=SI,AGE=y)$HDOM
       N1 <- module.N(N0=N0, AGE0=y-1, AGE1=y, THINNING=THINNING, AGET=AGET)$N1
       BA1 <- module.BA(N0=N0, HDOM0=HDOM0, AGE0=y, Z1=Z1, Z2=Z2, Z3=Z3, ZB=ZB, T1=T1, T2=T2,
                        AGEFERT=AGEFERT, S1=S1, S2=S2,projection=TRUE, BA0=BA0, N1=N1, HDOM1=HDOM1)$BA1 # With projection
@@ -201,7 +201,7 @@ module.simulation <- function(stand=NULL){
       # Competition Index estimated parameter
       d1 <- -0.093
 
-      HDOM1 <- stand.SITE(SI=SI,AGE=y, Z1=Z1, Z2=Z2, Z3=Z3, T1=T1, T2=T2, AGEFERT=AGEFERT)$HDOM
+      HDOM1 <- stand.SITE(SI=SI,AGE=y)$HDOM
 
       NU1 <- module.N(N0=NU0, AGE0=y-1, AGE1=y, THINNING=THINNING, AGET=AGET)$N1 # It uses u. status
       BAU1 <- module.BA(N0=NU0, HDOM0=HDOM0, AGE0=y-1, Z1=Z1, Z2=Z2, Z3=Z3, ZB=ZB, T1=T1, T2=T2,

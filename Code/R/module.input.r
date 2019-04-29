@@ -103,11 +103,11 @@ module.input <-  function(TYPE='PLOT', TREEDATA=NA, AREA=NA, SI=NA,
     HDOM0 <- tree$HDOM
 
     if(is.na(SI)==T){
-      SI <- stand.SITE(HDOM=HDOM0,AGE=AGE0, Z1=Z1, Z2=Z2, Z3=Z3, T1=T1, T2=T2, AGEFERT=AGEFERT)$SI    # Missing SI
+      SI <- stand.SITE(HDOM=HDOM0,AGE=AGE0)$SI    # Missing SI
     }
-    else if(is.na(AGE0)==T){
-      AGE0 <- stand.SITE(HDOM=HDOM0,AGE=AGE0, Z1=Z1, Z2=Z2, Z3=Z3, T1=T1, T2=T2, AGEFERT=AGEFERT)$AGE     # Missing AGE
-    }
+   # else if(is.na(AGE0)==T){
+   #    AGE0 <- stand.SITE(HDOM=HDOM0,AGE=AGE0, Z1=Z1, Z2=Z2, Z3=Z3, T1=T1, T2=T2, AGEFERT=AGEFERT)$AGE     # Missing AGE
+   #  }
 
     # If SI is missing and AGE is provided.
     else if(is.na(SI)==T &&  is.na(AGE0)==F){
@@ -135,11 +135,10 @@ module.input <-  function(TYPE='PLOT', TREEDATA=NA, AREA=NA, SI=NA,
 
     # Completing Site information
     if(is.na(HDOM0)==T){
-      HDOM0 <- stand.SITE(SI=SI, AGE=AGE0, Z1=Z1, Z2=Z2, Z3=Z3, T1=T1, T2=T2, AGEFERT=AGEFERT)$HDOM     # Missing HDOM
-      HDOM0 <- 1.1590386 * HDOM0 - 0.0048004  *  (HDOM0)^2 
+      HDOM0 <- stand.SITE(SI=SI, AGE=AGE0)$HDOM     # Missing HDOM
     }
     else if(is.na(SI)==T){
-      SI <- stand.SITE(HDOM=HDOM0,AGE=AGE0, Z1=Z1, Z2=Z2, Z3=Z3, T1=T1, T2=T2, AGEFERT=AGEFERT)$SI    # Missing SI
+      SI <- stand.SITE(HDOM=HDOM0,AGE=AGE0)$SI    # Missing SI
     }
 
     # Predicting BA0 by model (if not provided)

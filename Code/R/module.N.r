@@ -29,7 +29,7 @@ module.N  <-  function(N0=NA, AGE0=NA, AGE1=NA, THINNING=FALSE, AGET=NA){
   c1 <- -0.0041
   c2 <- -0.0019
   c3 <- 1.345
-  
+
   Zt <- 0
 
   # 1. If all informations are provided
@@ -40,7 +40,7 @@ module.N  <-  function(N0=NA, AGE0=NA, AGE1=NA, THINNING=FALSE, AGET=NA){
       Zt <- 1
     }
 
-    N1 <- N0*exp((c1+c2*Zt)*((AGE1^c3)-(AGE0^c3)))
+    N1 <- 0.9820844*N0*exp((c1+c2*Zt)*((AGE1^c3)-(AGE0^c3)))
 
   } else {
     stop("Warning - Please provide information required.")
